@@ -1,0 +1,30 @@
+﻿@model Recipes.ViewModels.LoginViewModel
+@{
+    ViewBag.PageTitle = "Login";
+}
+
+<div id="authentication-container">
+
+    <form method="post" asp-controller="Authentication" asp-action="Login">
+        <div class="authentication-input-container">
+            <label asp-for="Email"></label>
+            <input class="user-data" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-error left-error"></span>
+        </div>
+
+        <div class="authentication-input-container">
+            <label asp-for="Password"></label>
+            <input class="user-data" asp-for="Password" />
+            <span asp-validation-for="Password" class="text-error left-error"></span>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-error main-error"></div>
+
+        <div id="authentication-button-container">
+            <button class="main-button button-inline" type="submit">Log in</button>
+        </div>
+
+        <a id="forgot-password" asp-controller="Authentication" asp-action="ForgotPassword">Forgot your password?</a>
+    </form>
+
+</div>

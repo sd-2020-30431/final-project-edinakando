@@ -1,0 +1,36 @@
+﻿@model Recipes.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.PageTitle = "Register";
+}
+
+<div id="authentication-container">
+    <form method="post" id="register" asp-controller="Authentication" asp-action="Register">
+        <div class="authentication-input-container">
+            <label asp-for="FirstName"></label>
+            <input class="user-data" asp-for="FirstName" />
+            <span asp-validation-for="FirstName" class="text-error left-error"></span>
+        </div>
+
+        <div class="authentication-input-container">
+            <label asp-for="LastName"></label>
+            <input class="user-data" asp-for="LastName" />
+            <span asp-validation-for="LastName" class="text-error left-error"></span>
+        </div>
+
+        <div class="authentication-input-container">
+            <label asp-for="Email">Email</label>
+            <input class="user-data" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-error left-error"></span>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="text-error main-error"></div>
+
+        <div id="authentication-button-container">
+            <button class="main-button button-inline" type="submit">Register</button>
+        </div>
+    </form>
+
+</div>
+
+
