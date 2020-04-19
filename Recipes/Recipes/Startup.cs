@@ -1,11 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Recipes.BusinessLogic;
+using Recipes.BusinessLogic.Logic;
 using Recipes.DataAccess;
+using Recipes.DataAccess.Repositories;
 
 namespace Recipes
 {
@@ -20,15 +22,14 @@ namespace Recipes
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSession();
+
+            services.AddTransient<UserLogic>();
+            services.AddTransient<UserRepository>();
+            services.AddTransient<RoleRepository>();
+
             services.AddDbContext<RecipesDbContext>(options => options.UseMySql(Configuration.GetConnectionString("RECIPES_DB")));
-
             services.AddControllersWithViews();
-
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,34 +42,16 @@ namespace Recipes
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
             app.UseStaticFiles();
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
-
+            app.UseSession();
             app.UseRouting();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
-
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
