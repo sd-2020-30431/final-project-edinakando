@@ -38,7 +38,7 @@ namespace Recipes.BusinessLogic.Logic
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 Email = user.Email,
-                Role = await _roleRepository.GetRole(UserTypeDto.regular.ToString()),
+                Role = await _roleRepository.GetRole(user.Type.ToString()),
                 Password = HashingSHA.GenerateSHA256String(user.Password)
             });
             return result.ToUserDto();

@@ -62,7 +62,8 @@ namespace Recipes.Controllers
                 FirstName = registerViewModel.FirstName, 
                 LastName = registerViewModel.LastName, 
                 Email = registerViewModel.Email, 
-                Password = registerViewModel.Password
+                Password = registerViewModel.Password,
+                Type = (UserTypeDto)Enum.Parse(typeof(UserTypeDto), registerViewModel.Type.ToString())
             });
 
             HttpContext.Session.Set<UserDto>("User", user);

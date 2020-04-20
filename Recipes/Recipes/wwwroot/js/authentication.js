@@ -87,7 +87,8 @@
                             firstName: this.$content.find('#first-name-input').val(),
                             lastName: this.$content.find('#last-name-input').val(),
                             email: this.$content.find('#email-input').val(),
-                            password: this.$content.find('#password-input').val()
+                            password: this.$content.find('#password-input').val(),
+                            type: this.$content.find('#user-type').val()
                         };
 
                         $.ajax({
