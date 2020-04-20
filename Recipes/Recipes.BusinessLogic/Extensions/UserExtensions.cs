@@ -1,8 +1,6 @@
 ﻿using Recipes.BusinessLogic.Models;
 using Recipes.DataAccess.Entities;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Recipes.BusinessLogic.Extensions
 {
@@ -15,6 +13,7 @@ namespace Recipes.BusinessLogic.Extensions
 
             return new UserDto
             {
+                ID = model.ID,
                 FirstName = model.FirstName,
                 LastName = model.LastName,
                 Email = model.Email,
