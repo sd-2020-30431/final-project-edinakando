@@ -16,4 +16,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Recipes.BusinessLogic\Recipes.BusinessLogic.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
 </Project>

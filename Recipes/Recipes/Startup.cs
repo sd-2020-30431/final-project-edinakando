@@ -25,8 +25,10 @@ namespace Recipes
             services.AddSession();
 
             services.AddTransient<UserLogic>();
+            services.AddTransient<RecipesLogic>();
             services.AddTransient<UserRepository>();
             services.AddTransient<RoleRepository>();
+            services.AddTransient<RecipesRepository>();
 
             services.AddDbContext<RecipesDbContext>(options => options.UseMySql(Configuration.GetConnectionString("RECIPES_DB")));
             services.AddControllersWithViews();
