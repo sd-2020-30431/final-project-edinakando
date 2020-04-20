@@ -1,7 +1,9 @@
-﻿using Recipes.BusinessLogic.Models;
+﻿using Recipes.BusinessLogic.Extensions;
+using Recipes.BusinessLogic.Models;
 using Recipes.DataAccess.Entities;
 using Recipes.DataAccess.Repositories;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -40,5 +42,10 @@ namespace Recipes.BusinessLogic.Logic
             await _recipesRepository.AddImage(recipeId, path);
         }
 
+        public async Task<List<RecipeDto>> GetRecipesHeadlines()
+        {
+            var recipesResult = await _recipesRepository.GetRecipesHeadlines();
+            return recipesResult.Select(r => r.ToRecipeDto()).ToList();
+        }
     }
 }

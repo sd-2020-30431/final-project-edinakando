@@ -1,4 +1,5 @@
-﻿using Recipes.DataAccess.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using Recipes.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -37,6 +38,13 @@ namespace Recipes.DataAccess.Repositories
                 Path = imagePath
             });
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Recipe>> GetRecipesHeadlines()
+        {
+            return await _context.Recipes.Include(r => r.User)
+                                .ThenInclude(r => r.Role)
+                                .ToListAsync();
         }
     }
 }
