@@ -1,0 +1,54 @@
+﻿@{
+    ViewBag.PageTitle = "Add a recipe";
+}
+
+@section scripts{
+    <script>
+        Dropzone.options.myDropzone = {
+            autoProcessQueue: false,
+
+            init: function () {
+                myDropzone = this;
+            }
+        }
+    </script>
+}
+
+<div class="centered-container">
+
+    <input id="recipe-name" class="ingredient name" placeholder="Recipe Name" />
+
+    <div class="heading-section ftco-animate" style="display: inline-block">
+        <h2 class="mb-4">
+            <span>Add Ingredients</span>
+        </h2>
+    </div>
+
+    <div class="ingredients">
+        <div id="ingredient-1" class="ingredient-quantity">
+            <input id="ingredient-name-1" class="ingredient" placeholder="Ingredient Name" />
+            <input id="quantity-1" class="ingredient quantity" placeholder="Quantity" />
+            <button id="add-ingredient-button" class="add-icon" onclick="Recipes.addIngredient()"></button>
+        </div>
+    </div>
+
+    <br /><br /><br />
+
+    <div class="heading-section ftco-animate" style="display: inline-block">
+        <h2 class="mb-4"><span>Add instructions</span></h2>
+    </div>
+    <textarea id="instructions" class="instructions" cols="45" rows="10"></textarea>
+
+    <br /><br /><br />
+    <div class="heading-section ftco-animate" style="display: inline-block">
+        <h2 class="mb-4"><span>Add images</span></h2>
+    </div>
+    <form action="/Recipes/Upload" class="dropzone needsclick dz-clickable" id="my-dropzone">
+        <div class="dz-message needsclick">
+            Drop files here or click to upload.<br>
+        </div>
+    </form>
+
+    <button id="submit-all" onclick="Recipes.addRecipe()">Submit recipe</button>
+</div>
+
