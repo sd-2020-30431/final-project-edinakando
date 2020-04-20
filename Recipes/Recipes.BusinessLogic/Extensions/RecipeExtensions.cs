@@ -1,5 +1,6 @@
 ﻿using Recipes.BusinessLogic.Models;
 using Recipes.DataAccess.Entities;
+using System.Linq;
 
 namespace Recipes.BusinessLogic.Extensions
 {
@@ -14,7 +15,8 @@ namespace Recipes.BusinessLogic.Extensions
             {
                 Name = model.Name,
                 Instructions = model.Instructions,
-                User = model.User.ToUserDto()
+                User = model.User.ToUserDto(),
+                ImagePaths = model.Images.Select(i => i.Path).ToList()
             };
         }
     }

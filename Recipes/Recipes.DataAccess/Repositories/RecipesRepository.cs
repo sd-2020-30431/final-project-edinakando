@@ -42,7 +42,8 @@ namespace Recipes.DataAccess.Repositories
 
         public async Task<List<Recipe>> GetRecipesHeadlines()
         {
-            return await _context.Recipes.Include(r => r.User)
+            return await _context.Recipes.Include(r => r.Images)
+                                .Include(r => r.User)
                                 .ThenInclude(r => r.Role)
                                 .ToListAsync();
         }

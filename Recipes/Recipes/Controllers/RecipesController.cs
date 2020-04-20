@@ -60,7 +60,7 @@ namespace Recipes.Controllers
                     await file.CopyToAsync(fileStream);
                 }
 
-                await _recipesLogic.AddImageToRecipe(recipeId, path);
+                await _recipesLogic.AddImageToRecipe(recipeId, Path.Combine("uploads", file.FileName));
             }
             return RedirectToAction("AddRecipe");
         }

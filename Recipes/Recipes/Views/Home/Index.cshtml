@@ -1,3 +1,47 @@
-﻿@{
-    ViewBag.PageTitle = "Home";
-}
+﻿@model Recipes.ViewModels.RecipesViewModel
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_4.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">Foods</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    @{
+                        var counter = 0;
+                        foreach (var recipe in Model.Recipes)
+                        {
+                            counter++;
+                            <div class="col-md-4 ftco-animate">
+                                <div class="blog-entry">
+                                    @*todo: add recipe date*@
+                                    <a href="javascript:Recipes.viewRecipe(@recipe.Id)" class="img-2"><img src=@recipe.Images.First() class="img-fluid" alt="Image"></a>
+
+                                    <div class="text pt-3">
+                                        <p class="meta d-flex"><span class="pr-3">Type @*todo: categories*@</span><span class="ml-auto pl-3">March 01, 2018</span></p>
+
+                                        <h3><a href="javascript:Recipes.viewRecipe(@recipe.Id)">@recipe.Name</a></h3>
+
+                                        <p class="mb-0"><a href="javascript:Recipes.viewRecipe(@recipe.Id)" class="btn btn-black py-2">Read More</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

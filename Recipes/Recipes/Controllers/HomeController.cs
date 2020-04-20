@@ -24,7 +24,8 @@ namespace Recipes.Controllers
                 Recipes = recipes.Select(r => new RecipeViewModel
                 {
                     Name = r.Name,
-                    User = r.User.ToUserViewModel()
+                    User = r.User.ToUserViewModel(),
+                    Images = r.ImagePaths
                 }).ToList()
             });
         }
