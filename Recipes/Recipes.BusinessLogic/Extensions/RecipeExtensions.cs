@@ -16,7 +16,20 @@ namespace Recipes.BusinessLogic.Extensions
                 Name = model.Name,
                 Instructions = model.Instructions,
                 User = model.User.ToUserDto(),
-                ImagePaths = model.Images.Select(i => i.Path).ToList()
+                ImagePaths = model.Images.Select(i => i.Path).ToList(),
+                Ingredients = model.Ingredients.Select(i => i.ToIngredientDto()).ToList()
+            };
+        }
+
+        public static IngredientDto ToIngredientDto(this Ingredient model)
+        {
+            if (model == null)
+                return null;
+
+            return new IngredientDto
+            {
+                Name = model.Name,
+                Quantity = model.Quantity
             };
         }
     }

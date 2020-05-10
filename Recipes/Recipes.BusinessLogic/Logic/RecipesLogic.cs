@@ -47,5 +47,11 @@ namespace Recipes.BusinessLogic.Logic
             var recipesResult = await _recipesRepository.GetRecipesHeadlines();
             return recipesResult.Select(r => r.ToRecipeDto()).ToList();
         }
+
+        public async Task<RecipeDto> GetRecipeById(int id)
+        {
+            var recipe =  await _recipesRepository.GetRecipeById(id);
+            return recipe.ToRecipeDto();
+        }
     }
 }

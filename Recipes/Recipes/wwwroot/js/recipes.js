@@ -57,15 +57,15 @@
         });
     },
    
-    //viewRecipe: function (recipeId) {
-    //    $.ajax({
-    //        type: 'POST',
-    //        url: '/Recipes/Recipe',
-    //        data: { recipeId: recipeId },
-    //        success: function () {
-    //        },
-    //        error: function () { }
-    //    });
-    //    window.location.href = '/Recipes/Recipe?recipeId=' + recipeId;
-    //}
+    viewRecipe: function (recipeid) {
+        //$.ajax({
+        //    type: 'post',
+        //    url: '/recipes/recipe',
+        //    data: { recipeid: recipeid },
+        //    success: function () {
+        //    },
+        //    error: function () { }
+        //});
+        window.location.href = '/recipes/recipe?recipeid=' + recipeid;
+    }
 }

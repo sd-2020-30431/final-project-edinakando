@@ -64,5 +64,24 @@ namespace Recipes.Controllers
             }
             return RedirectToAction("AddRecipe");
         }
+
+        public async Task<IActionResult> Recipe(Int32 recipeId)
+        {
+            var recipe = await _recipesLogic.GetRecipeById(recipeId);
+
+            var recipeViewModel = new RecipeViewModel
+            {
+                Name = recipe.Name,
+                Instructions = recipe.Instructions,
+                Ingredients = recipe.Ingredients.Select(r => new IngredientViewModel
+                {
+                    Name = r.Name,
+                    Quantity = r.Quantity
+                }).ToList(),
+                User = recipe.User.ToUserViewModel(),
+                Images = recipe.ImagePaths
+            };
+            return View(recipeViewModel);
+        }
     }
 }

@@ -1,0 +1,156 @@
+﻿@model Recipes.ViewModels.RecipeViewModel
+
+<section class="hero-wrap hero-wrap-2" style="background-image: url('../images/bg_4.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-center">
+            <div class="col-md-9 ftco-animate pb-5 text-center">
+                <h1 class="mb-3 bread">@Model.Name</h1>
+                <h2 class="mb-3 bread" style="color:white;">by @Model.User.FirstName @Model.User.LastName</h2>
+                <p class="breadcrumbs"><span class="mr-2"><a href="/Home/Recipes">Home </a></span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 order-lg-last ftco-animate">
+                <div class="rate">
+                    <input type="radio" id="star5" name="rate" value="5" />
+                    <label for="star5" title="text"></label>
+                    <input type="radio" id="star4" name="rate" value="4" />
+                    <label for="star4" title="text"></label>
+                    <input type="radio" id="star3" name="rate" value="3" />
+                    <label for="star3" title="text"></label>
+                    <input type="radio" id="star2" name="rate" value="2" />
+                    <label for="star2" title="text"></label>
+                    <input type="radio" id="star1" name="rate" value="1" />
+                    <label for="star1" title="text"></label>
+                </div>
+
+                <br /><br />
+                <div class="heading-section ftco-animate" style="display: inline-block">
+                    <h2 class="mb-4">
+                        <span>Ingredients</span>
+                    </h2>
+                </div>
+
+                <ul class="categories">
+
+                    @foreach (var ingredient in Model.Ingredients)
+                    {
+                        <li><b>@ingredient.Name</b> - @ingredient.Quantity</li>
+                    }
+                    <li></li>
+                </ul>
+
+                <br /><br />
+                <div class="heading-section ftco-animate" style="display: inline-block">
+                    <h2 class="mb-4">
+                        <span>Instructions</span>
+                    </h2>
+                </div>
+
+                <p>@Model.Instructions</p>
+
+
+                <div class="pt-5 mt-5">
+                    <h3 class="mb-5">6 Comments</h3>
+                    <ul class="comment-list">
+                        <li class="comment">
+                            <div class="comment-body">
+                                <h3>John Doe</h3>
+                                <div class="meta">October 03, 2018 at 2:21pm</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                <p><a href="#" class="reply">Reply</a></p>
+                            </div>
+                        </li>
+
+                        <li class="comment">
+                            <div class="comment-body">
+                                <h3>John Doe</h3>
+                                <div class="meta">October 03, 2018 at 2:21pm</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                <p><a href="#" class="reply">Reply</a></p>
+                            </div>
+
+                            <ul class="children">
+                                <li class="comment">
+                                    <div class="comment-body">
+                                        <h3>John Doe</h3>
+                                        <div class="meta">October 03, 2018 at 2:21pm</div>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                        <p><a href="#" class="reply">Reply</a></p>
+                                    </div>
+
+
+                                    <ul class="children">
+                                        <li class="comment">
+                                            <div class="comment-body">
+                                                <h3>John Doe</h3>
+                                                <div class="meta">October 03, 2018 at 2:21pm</div>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                                <p><a href="#" class="reply">Reply</a></p>
+                                            </div>
+
+                                            <ul class="children">
+                                                <li class="comment">
+                                                    <div class="comment-body">
+                                                        <h3>John Doe</h3>
+                                                        <div class="meta">October 03, 2018 at 2:21pm</div>
+                                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                                        <p><a href="#" class="reply">Reply</a></p>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="comment">
+                            <div class="comment-body">
+                                <h3>John Doe</h3>
+                                <div class="meta">October 03, 2018 at 2:21pm</div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
+                                <p><a href="#" class="reply">Reply</a></p>
+                            </div>
+                        </li>
+                    </ul>
+                    <!-- END comment-list -->
+
+                    <div class="comment-form-wrap pt-5">
+                        <h3 class="mb-5">Leave a comment</h3>
+                        <form action="#" class="p-5 bg-light">
+                            <div class="form-group">
+                                <label for="name">Name *</label>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email *</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="website">Website</label>
+                                <input type="url" class="form-control" id="website">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
