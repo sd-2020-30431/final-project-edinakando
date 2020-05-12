@@ -20,5 +20,18 @@ namespace Recipes.Extensions
                 LastName = model.LastName
             };
         }
+
+        public static CommentDto ToCommentDto(this CommentViewModel model)
+        {
+            if (model == null)
+                return null;
+
+            return new CommentDto
+            {
+                RecipeId = model.RecipeId,
+                UserName = model.UserName,
+                Message = model.Message
+            };
+        }
     }
 }

@@ -53,5 +53,15 @@ namespace Recipes.BusinessLogic.Logic
             var recipe =  await _recipesRepository.GetRecipeById(id);
             return recipe.ToRecipeDto();
         }
+
+        public async Task AddComment(CommentDto comment)
+        {
+            await _recipesRepository.AddComment(new Comment
+            {
+                RecipeId = comment.RecipeId,
+                UserName = comment.UserName,
+                Message = comment.Message
+            });
+        }
     }
 }

@@ -16,5 +16,7 @@ namespace Recipes.DataAccess.Entities
         [ForeignKey("user_fk")]
         public Int32 UserId { get; set; }
         public User User { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 }

@@ -67,5 +67,24 @@
         //    error: function () { }
         //});
         window.location.href = '/recipes/recipe?recipeid=' + recipeid;
+    },
+
+
+    addComment: function (recipeId) {
+        var comment = {
+            recipeId: recipeId,
+            userName: $('#comment-user-name').val(),
+            message: $('#comment-message').val()
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/Recipes/AddComment',
+            data: comment,
+            success: function (response) {
+                location.reload();
+            },
+            error: function () { }
+        });
     }
 }

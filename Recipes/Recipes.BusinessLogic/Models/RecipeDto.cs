@@ -5,6 +5,7 @@ namespace Recipes.BusinessLogic.Models
 {
     public class RecipeDto
     {
+        public int Id { get; set; }
         public String Name { get; set; }
         public List<IngredientDto> Ingredients { get; set; }
         public String Instructions { get; set; }

@@ -13,6 +13,7 @@ namespace Recipes.BusinessLogic.Extensions
 
             return new RecipeDto
             {
+                Id = model.Id,
                 Name = model.Name,
                 Instructions = model.Instructions,
                 User = model.User.ToUserDto(),

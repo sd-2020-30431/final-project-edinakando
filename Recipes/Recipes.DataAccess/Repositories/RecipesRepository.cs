@@ -57,5 +57,11 @@ namespace Recipes.DataAccess.Repositories
                             .ThenInclude(r => r.Role)
                             .FirstAsync();
         }
+
+        public async Task AddComment(Comment comment)
+        {
+            await _context.Comments.AddAsync(comment);
+            await _context.SaveChangesAsync();
+        }
     }
 }

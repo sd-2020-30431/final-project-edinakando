@@ -65,12 +65,14 @@ namespace Recipes.Controllers
             return RedirectToAction("AddRecipe");
         }
 
+        [HttpGet]
         public async Task<IActionResult> Recipe(Int32 recipeId)
         {
             var recipe = await _recipesLogic.GetRecipeById(recipeId);
 
             var recipeViewModel = new RecipeViewModel
             {
+                Id = recipe.Id,
                 Name = recipe.Name,
                 Instructions = recipe.Instructions,
                 Ingredients = recipe.Ingredients.Select(r => new IngredientViewModel
@@ -82,6 +84,13 @@ namespace Recipes.Controllers
                 Images = recipe.ImagePaths
             };
             return View(recipeViewModel);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddComment(CommentViewModel comment)
+        {
+            await _recipesLogic.AddComment(comment.ToCommentDto());
+            return Ok();
         }
     }
 }
