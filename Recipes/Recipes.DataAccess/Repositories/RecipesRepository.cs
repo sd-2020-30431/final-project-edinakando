@@ -2,6 +2,7 @@
 using Recipes.DataAccess.Entities;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Recipes.DataAccess.Repositories
@@ -44,6 +45,7 @@ namespace Recipes.DataAccess.Repositories
         {
             return await _context.Recipes.Include(r => r.Images)
                                 .Include(r => r.Ingredients)
+                                .Include(r => r.Comments)
                                 .Include(r => r.User)
                                 .ThenInclude(r => r.Role)
                                 .ToListAsync();
@@ -53,6 +55,7 @@ namespace Recipes.DataAccess.Repositories
         {
             return await _context.Recipes.Include(r => r.Images)
                             .Include(r => r.Ingredients)
+                            .Include(r => r.Comments)
                             .Include(r => r.User)
                             .ThenInclude(r => r.Role)
                             .FirstAsync();
@@ -60,8 +63,14 @@ namespace Recipes.DataAccess.Repositories
 
         public async Task AddComment(Comment comment)
         {
+            comment.Date = DateTime.UtcNow;
             await _context.Comments.AddAsync(comment);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<List<Comment>> GetComments(int recipeId)
+        {
+            return await _context.Comments.Where(c => c.RecipeId == recipeId).ToListAsync();
         }
     }
 }

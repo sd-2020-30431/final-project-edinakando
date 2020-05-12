@@ -63,5 +63,11 @@ namespace Recipes.BusinessLogic.Logic
                 Message = comment.Message
             });
         }
+
+        public async Task<List<CommentDto>> GetComments(int recipeId)
+        {
+            var comments = await _recipesRepository.GetComments(recipeId);
+            return comments.Select(c => c.ToCommentDto()).ToList();
+        }
     }
 }

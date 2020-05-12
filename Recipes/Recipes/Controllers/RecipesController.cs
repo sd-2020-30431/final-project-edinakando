@@ -81,7 +81,13 @@ namespace Recipes.Controllers
                     Quantity = r.Quantity
                 }).ToList(),
                 User = recipe.User.ToUserViewModel(),
-                Images = recipe.ImagePaths
+                Images = recipe.ImagePaths,
+                Comments = (await _recipesLogic.GetComments(recipe.Id)).Select(c => new CommentViewModel
+                {
+                    UserName = c.UserName,
+                    Message = c.Message,
+                    Date = c.Date
+                }).ToList()
             };
             return View(recipeViewModel);
         }

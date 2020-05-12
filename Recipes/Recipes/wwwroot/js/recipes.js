@@ -82,7 +82,7 @@
             url: '/Recipes/AddComment',
             data: comment,
             success: function (response) {
-                location.reload();
+                window.location.reload();
             },
             error: function () { }
         });

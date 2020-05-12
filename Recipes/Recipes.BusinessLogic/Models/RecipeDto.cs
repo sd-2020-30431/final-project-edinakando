@@ -12,5 +12,6 @@ namespace Recipes.BusinessLogic.Models
         public Int32 UserId { get; set; }
         public UserDto User { get; set; }
         public List<String> ImagePaths { get; set; }
+        public List<CommentDto> Comments { get; set; }
     }
 }

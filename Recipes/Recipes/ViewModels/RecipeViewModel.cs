@@ -12,5 +12,6 @@ namespace Recipes.ViewModels
         public Int32 UserId { get; set; }
         public UserViewModel User { get; set; }
         public List<String> Images { get; set; }
+        public List<CommentViewModel> Comments { get; set; }
     }
 }
